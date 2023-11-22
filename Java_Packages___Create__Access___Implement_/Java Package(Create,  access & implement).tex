@@ -1,0 +1,221 @@
+\documentclass{article}
+\usepackage{listings}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[a4paper, total={9in, 11in}, left=2in, right=2in, top=2in, bottom=2in, vmargin={20mm,20mm},hmargin={20mm,20mm}]{geometry}
+\usepackage{xcolor,lipsum}
+\pagecolor{white}
+\usepackage{calc}
+\usepackage{eso-pic}
+
+\newlength{\PageFrameTopMargin}
+\newlength{\PageFrameBottomMargin}
+\newlength{\PageFrameLeftMargin}
+\newlength{\PageFrameRightMargin}
+
+\setlength{\PageFrameTopMargin}{1cm}
+\setlength{\PageFrameBottomMargin}{1cm}
+\setlength{\PageFrameLeftMargin}{1cm}
+\setlength{\PageFrameRightMargin}{1cm}
+
+\makeatletter
+
+\newlength{\Page@FrameHeight}
+\newlength{\Page@FrameWidth}
+
+\AddToShipoutPicture{
+  \thinlines
+  \setlength{\Page@FrameHeight}{\paperheight-\PageFrameTopMargin-\PageFrameBottomMargin}
+  \setlength{\Page@FrameWidth}{\paperwidth-\PageFrameLeftMargin-\PageFrameRightMargin}
+  \put(\strip@pt\PageFrameLeftMargin,\strip@pt\PageFrameTopMargin){
+    \framebox(\strip@pt\Page@FrameWidth, \strip@pt\Page@FrameHeight){}}}
+
+
+\color{black}
+\date{}
+\author{Vishal Lalit Dhake}
+\title{Experiment No.2 How to create, access and implement a java package  }
+\begin{document}
+
+\title{\fontsize{16pt}{20pt}\selectfont{\textbf{\textrm{\underline{Experiment no.2}}}}
+\author{\textbf{\textrm{}}}}
+
+\maketitle
+\makebox[\textwidth][c]{ \textbf{\fontsize{14}{20}\textrm{\underline{Title: How to create, access and implement a java package}}}}
+
+\textbf{\fontsize{12}{20}\textrm{{ {Aim: Write a Java code to : Create a Java Package
+Access a Java package
+Implementation interfaces
+}}}}
+
+
+
+\section*{Learning Objective}
+
+\begin{enumerate}
+\item  Students should able to create, access and implement a java package or a predefined package.
+\item It strengthen the ability of the students to identify and apply the suitable Package codes for the given real world problem. 
+\item It enables them to gain knowledge in practical applications of Java Packages .
+\end{enumerate}
+
+
+
+
+
+\section*{Lab Outcomes}
+
+\begin{enumerate}
+\item Write a java program to create, access and implement interfaces of a java package.
+\item Being able to effectively use the interfaces in Java Package implementation.
+\end{enumerate}
+
+
+
+\section*{What is java package}
+Java packages serve as containers for classes, interfaces, enumerations, and other program elements. They play a pivotal role in creating a modular and maintainable codebase, which is essential for building robust and scalable software systems. Through packages, Java enables developers to achieve several vital objectives:
+
+Organization: Packages allow developers to group related classes and components together. This logical grouping enhances code organization, making it more intuitive and comprehensible. By adhering to a systematic package structure, developers can quickly locate, modify, and extend specific parts of their codebase.
+
+Access Control: Packages introduce the concept of access control in Java, providing varying levels of visibility and encapsulation. This means that you can control which classes and members are accessible to other parts of your code and which should remain hidden. This ensures the integrity of your code and helps prevent unintentional misuse of internal components.
+
+Modularity: Java's package system promotes modularity, enabling the development of components that can be reused across different projects. With well-designed packages, you can create libraries and frameworks that are easily shareable and extendable. This promotes code reusability and accelerates development by building on existing solutions.
+
+Collaboration: In team-based software development, packages facilitate collaboration. Developers can work on separate packages or modules independently, reducing the chances of code conflicts and making it easier to integrate contributions from multiple team members.
+
+This introduction to Java packages sets the stage for a deeper exploration of their creation, accessing, and practical implementation. In the following sections, we will delve into the specifics of creating packages, accessing their contents, and implementing packages in real-world scenarios.
+
+\section*{Creating a Java Package}
+
+\subsection*{How to crate a Java package}
+A java package is a group of similar types of classes, interfaces and sub-packages.
+
+Package in java can be categorized in two form, built-in package and user-defined package.
+
+There are many built-in packages such as java, lang, awt, javax, swing, net, io, util, sql etc.
+
+Here, we will have the detailed learning of creating and using user-defined packages.
+
+
+\subsection*{Advantages }
+  1) Java package is used to categorize the classes and interfaces so that they can be easily maintained.
+
+2) Java package provides access protection.
+
+3) Java package removes naming collision.
+ \ref{jpg:packageadv} .
+
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.75\linewidth]{packageadv.jpg}
+\caption{\label{fig:Adv}Advantages of Java packages}
+\end{figure}
+
+\subsection*{Creating simple package}
+To create a simple package in Java, follow these steps:
+
+Choose a Package Name
+: Decide on a meaningful package name, typically in reverse domain format  \textbf{\textit{(e.g., com.example.mypackage).}}
+
+Create a Directory Structure: In your project directory, create a subdirectory matching the package name \textbf{\textit{(e.g., com/example/mypackage).}}
+
+Place Classes in the Directory: Save your Java classes within the package directory, adding the package statement at the top of each file, specifying the package name.
+
+Compile the Classes: Use the javac compiler to compile your classes. Ensure the class files are stored in the package directory.
+
+Accessing from Other Classes: To use classes from this package in other parts of your project, include an import statement specifying the package and class name.
+
+\texttt{myPackage}.
+
+\begin{lstlisting}[language=Java, backgroundcolor=\color{gray!10}]
+package myPackage;
+
+public class MyClass {
+    public void display() {
+        System.out.println("Hello from myPackage!");
+    }
+}
+\end{lstlisting}
+
+
+
+\section*{Accessing the package}
+
+To access a Java package, you need to follow specific conventions to ensure your code can locate and use classes and components within that package. To do so, you should:
+
+\underline{Import the Package}: At the beginning of your Java source file, use the import statement to specify the package you want to access. For example, if you have a package named com.example.mypackage, include the line import com.example.mypackage.*; or specify individual classes within the package. This statement tells the Java compiler where to find the classes you intend to use.
+
+\underline{Ensure Classpath Configuration}: If you are working with packages that are external to your project, ensure that the package or JAR file containing the package is on your classpath. This enables the Java runtime to locate the package at runtime.
+
+\underline{Use the Classes}: Once the package is imported and your classpath is correctly configured, you can use the classes and components from the package within your code. Simply reference them by their names, assuming you have adhered to appropriate access modifiers (e.g., public, protected) within the package to control visibility.
+
+For example, if you imported the com.example.mypackage and it contains a class named MyClass, you can create an instance of MyClass and use its methods within your code.
+
+In summary, accessing a Java package involves importing the package, configuring the classpath if necessary, and then using the package's classes as needed in your code. 
+\begin{lstlisting}[language=Java, backgroundcolor=\color{gray!10}]
+import myPackage.MyClass;
+
+public class Main {
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+        obj.display();
+    }
+}
+\end{lstlisting}
+
+\section*{Implementation interfaces}
+
+
+\textbf{Create an Interface}: Define the interface that specifies a set of methods that classes within the package must implement. For instance, you can create an interface named MyInterface:
+let's create a Java interface called \texttt{MyInterface}.
+
+\begin{lstlisting}[language=Java, backgroundcolor=\color{gray!10}]
+package myPackage;
+
+public interface MyInterface {
+    void someMethod();
+}
+\end{lstlisting}
+
+\textbf{Implement the Interface}: In the same package or within classes that use the package, create classes that implement the interface. These classes must provide concrete implementations for all methods declared in the interface:
+
+\texttt{MyInterface} in a class.
+
+\begin{lstlisting}[language=Java, backgroundcolor=\color{gray!10}]
+package myPackage;
+
+public class MyImplementation implements MyInterface {
+    public void someMethod() {
+        System.out.println("Interface method implementation");
+    }
+}
+\end{lstlisting}
+
+
+
+\textbf{Use the Interface}: You can now use classes that implement the interface throughout your package or application. When working with these classes, you can treat them as instances of the interface type, providing a common interface for interacting with various implementations:
+
+
+\section*{Lab Outcomes}
+
+\begin{enumerate}
+\item Write a Java code to Create Package
+\item Access and implement a Java package
+\end{enumerate}
+
+
+\section*{Conclusion}
+This project demonstrates the creation of a Java package, accessing its classes from another class, and implementing an interface within the package.
+
+
+\begin{lstlisting}
+   - Vishal Lalit Dhake SE(B44)
+     - Vrushabh Chavha SE (B42)
+\end{lstlisting}
+  
+\end{document}
+
